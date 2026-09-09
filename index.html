@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
+
+  <meta name="author" content="Jeff Dickinson">
+  <meta name="author" content="Eric Zhang">
+  <title>AI Skills for Clinical Trial Design &amp; ADaM Derivation</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">AI Skills for Clinical Trial Design &amp; ADaM Derivation</h1>
+  <p class="subtitle">A hands-on workshop · R/Pharma 2026</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jeff Dickinson 
+</div>
+        <p class="quarto-title-affiliation">
+            Navitas Data Sciences · admiral Core Team
+          </p>
+    </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Eric Zhang 
+</div>
+        <p class="quarto-title-affiliation">
+            [CONFIRM WITH ERIC: affiliation]
+          </p>
+    </div>
+</div>
+
+</section>
+<section>
+<section id="welcome" class="title-slide slide level1 unnumbered center">
+<h1>Welcome</h1>
+
+</section>
+<section id="ai-skills-for-clinical-trial-design-adam-derivation" class="slide level2" data-number="0.1">
+<h2><span class="header-section-number">0.1</span> AI Skills for Clinical Trial Design &amp; ADaM Derivation</h2>
+<p><strong>R/Pharma 2026 Workshop</strong></p>
+<p>Presenters:</p>
+<ul>
+<li><strong>Jeff Dickinson</strong> — Navitas Data Sciences; admiral Core Team</li>
+<li><strong>Eric Zhang</strong> — [CONFIRM WITH ERIC: affiliation / title]</li>
+</ul>
+<aside class="notes">
+<p>Housekeeping to cover verbally: total session length, break schedule, how to ask for help during hands-on time, and where the repo lives.</p>
+<p>[CONFIRM WITH JEFF: exact workshop date, room, and session length so we can state it here or on a housekeeping slide.]</p>
+<p>One-line framing for the opening: this is a working session — by the end you will have run two production-style clinical-programming workflows end to end, driven entirely by describing the task to an AI agent in plain language.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-you-will-walk-out-with" class="slide level2" data-number="0.2">
+<h2><span class="header-section-number">0.2</span> What you will walk out with</h2>
+<ul>
+<li>A working mental model of what an <strong>agent skill</strong> is and why it changes clinical programming</li>
+<li>Hands-on experience running the <strong>admiral ADaM skills</strong> (ADSL → ADAE / BDS)</li>
+<li>Hands-on experience running the <strong>group sequential design skill</strong> for a survival trial</li>
+<li>A local setup you can keep using after the workshop</li>
+</ul>
+<aside class="notes">
+<p>Emphasise: these skills produce <em>drafting aids, not validated deliverables</em>. Everything the agent writes still goes through your own QC before any regulatory, clinical, or GxP-regulated use. We will repeat this point in each section.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="agenda" class="slide level2" data-number="0.3">
+<h2><span class="header-section-number">0.3</span> Agenda</h2>
+<ol type="1">
+<li>Skills overview — what they are, why they matter</li>
+<li>Environment setup — sign in, launch Positron, check packages</li>
+<li><strong>Section A</strong> — ADaM generation (Jeff)</li>
+<li><strong>Section B</strong> — Group sequential design (Eric)</li>
+<li>Wrap-up and where to go next</li>
+</ol>
+<aside class="notes">
+<p>[CONFIRM WITH JEFF/ERIC: time budget per section — fill in once total session length is known. Rough split to confirm: ~15 min overview, ~15 min setup, ~45 min Section A, ~45 min Section B, ~10 min wrap-up.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="skills-overview" class="title-slide slide level1 center" data-number="1">
+<h1><span class="header-section-number">1</span> Skills overview</h1>
+
+</section>
+<section id="what-is-a-skill" class="slide level2" data-number="1.1">
+<h2><span class="header-section-number">1.1</span> What is a “skill”?</h2>
+<p>A <strong>skill</strong> is a reusable, model-agnostic workflow an AI coding agent loads on demand:</p>
+<ul>
+<li>A <code>SKILL.md</code> file — step-by-step instructions for one class of task</li>
+<li>Supporting <strong>reference files</strong> — conventions, function-selection logic, failure modes</li>
+<li>Bundled <strong>scripts</strong> — R / Python the agent runs in your environment</li>
+</ul>
+<p>The agent reads the skill only when your request matches it, then follows it instead of improvising.</p>
+<aside class="notes">
+<p>Contrast with a raw prompt: a prompt is transient and lives in one person’s head or chat history. A skill is version-controlled, reviewable, and encodes institutional knowledge — “here is how <em>we</em> derive ADSL” — so every run starts from the same vetted baseline.</p>
+<p>Analogy: an SOP that the agent actually executes, not just reads.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-skills-matter-for-clinical-programming" class="slide level2" data-number="1.2">
+<h2><span class="header-section-number">1.2</span> Why skills matter for clinical programming</h2>
+<p>Clinical programming is high-stakes, convention-heavy, and traceability-driven. A skill lets you encode, once:</p>
+<ul>
+<li>CDISC / ADaMIG conventions (<code>"Y"</code>/<code>NA</code> flags, study-day rules, date imputation direction)</li>
+<li>Function-selection logic (when <code>derive_vars_merged()</code> vs <code>derive_vars_merged_lookup()</code>)</li>
+<li>QC scaffolding (<code>stopifnot()</code> assertions, <code># REVIEW:</code> markers at every protocol-specific decision)</li>
+</ul>
+<p>The agent then reproduces that discipline on every run.</p>
+<aside class="notes">
+<p>The point is consistency and traceability, not just speed. A skilled run produces code that already has review markers where a human must make a protocol call — the reviewer’s attention is directed, not diffused.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="skills-vs.-no-skills-the-benchmarking-evidence" class="slide level2" data-number="1.3">
+<h2><span class="header-section-number">1.3</span> Skills vs.&nbsp;no skills — the benchmarking evidence</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>[CONFIRM WITH JEFF: benchmark figures to be supplied — skill-delta gains and A/B comparison numbers from the pharma-skills benchmarking work. Do not present until Jeff provides the exact figures and framing.]</p>
+</div>
+</div>
+</div>
+<p>Placeholder points to replace with real numbers:</p>
+<ul>
+<li>Skill-delta gain (skilled vs.&nbsp;unskilled agent) on the ADaM tasks: <strong>[figure]</strong></li>
+<li>A/B comparison — what was measured, on which tasks: <strong>[framing]</strong></li>
+<li>Which output dimensions improved most (e.g.&nbsp;<code># REVIEW:</code> coverage, function choice, convention adherence): <strong>[detail]</strong></li>
+</ul>
+<aside class="notes">
+<p>Jeff to narrate the methodology: what the benchmark scored, how many tasks, skilled vs.&nbsp;unskilled conditions, and the headline delta. Keep the on-slide numbers minimal — details go in the talk track.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="the-source-project-pharma-skills" class="slide level2" data-number="1.4">
+<h2><span class="header-section-number">1.4</span> The source project: pharma-skills</h2>
+<p>These skills come from the R Consortium <strong><code>pharma-skills</code></strong> project (Submissions Working Group, Pilot 7; with the BBSW AI committee).</p>
+<p><a href="https://github.com/RConsortium/pharma-skills/tree/main" class="uri">https://github.com/RConsortium/pharma-skills/tree/main</a></p>
+<p>The full catalog also includes <code>sdtm-oak</code>, <code>clinical-trial-simulation</code>, <code>statistical-reviewer</code>, <code>rounding</code>, and more, plus a skill development <strong>lifecycle</strong> and community benchmarking.</p>
+<aside class="notes">
+<p>Every skill in this workshop repo is copied from pharma-skills without changes to its derivation logic. Credit: admiral skills — Jeff Dickinson (Navitas); group-sequential-design — Eric Zhang.</p>
+<p>Point people at the LIFECYCLE.md doc if they want to contribute a skill.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="two-threads-today" class="slide level2" data-number="1.5">
+<h2><span class="header-section-number">1.5</span> Two threads today</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 data-number="1.5.1" id="section-a-adam-generation"><span class="header-section-number">1.5.1</span> Section A — ADaM generation</h3>
+<p>Derive analysis datasets from SDTM with <strong>{admiral}</strong>:</p>
+<ul>
+<li><code>admiral</code> (parent conventions)</li>
+<li><code>admiral-adsl</code> → <code>admiral-adae</code> → <code>admiral-bds</code></li>
+</ul>
+<p>Output: QC-ready, review-annotated R.</p>
+</div><div class="column" style="width:50%;">
+<h3 data-number="1.5.2" id="section-b-group-sequential-design"><span class="header-section-number">1.5.2</span> Section B — Group sequential design</h3>
+<p>Design a survival trial with <strong>gsDesign / gsDesign2 / lrstat</strong>:</p>
+<ul>
+<li>Spending-function boundaries, sample size, multiplicity</li>
+<li>Simulation-based verification</li>
+<li>Template-driven Word report</li>
+</ul>
+</div></div>
+<aside class="notes">
+<p>Both threads share the same interaction model: you describe the task in natural language, the agent loads the matching skill, and you review what it produces. The domains differ; the workflow does not.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="environment-setup" class="title-slide slide level1 center" data-number="2">
+<h1><span class="header-section-number">2</span> Environment setup</h1>
+
+</section>
+<section id="sign-in-to-posit-workbench" class="slide level2" data-number="2.1">
+<h2><span class="header-section-number">2.1</span> 1. Sign in to Posit Workbench</h2>
+<p>Go to <strong><a href="https://workshop.posit.team/" class="uri">https://workshop.posit.team/</a></strong> and sign in.</p>
+<ul>
+<li>Choose <strong>Sign in with OpenID</strong> <em>or</em> <strong>Sign in with GitHub</strong></li>
+<li>Use the same account for the whole session</li>
+</ul>
+<aside class="notes">
+<p>Mirror the reference deck’s sign-in style: walk the room through it live, confirm everyone is in before moving on. If someone’s GitHub sign-in fails, have them try the OpenID option.</p>
+<p>[CONFIRM WITH JEFF: is there a per-attendee username/password, an access code, or is it self-service GitHub/OpenID only? Confirm the exact wording of the sign-in options shown on workshop.posit.team.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="launch-a-positron-session" class="slide level2" data-number="2.2">
+<h2><span class="header-section-number">2.2</span> 2. Launch a Positron session</h2>
+<p>In Workbench, start a new session and choose the <strong>Positron</strong> IDE.</p>
+<p><strong>Why Positron?</strong> It supports <strong>both R and Python</strong> in one IDE — Section A is R (admiral), and Section B’s report generator is Python (<code>python-docx</code>). One session covers both threads.</p>
+<aside class="notes">
+<p>[CONFIRM WITH JEFF: session resource preset to pick (CPU / memory), and the project / working directory attendees should land in — e.g.&nbsp;a pre-cloned copy of this repo, or do they clone it themselves as the first step?]</p>
+<p>If attendees clone it themselves: <code>git clone https://github.com/jeffreyad/rpharma-2026-workshop.git</code> [CONFIRM WITH JEFF: canonical repo URL.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="run-the-setup-check" class="slide level2" data-number="2.3">
+<h2><span class="header-section-number">2.3</span> 3. Run the setup check</h2>
+<p>From the repo root, run the environment check script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">source</span>(<span class="st">"check_setup.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It verifies, printing <code>[ OK ]</code> / <code>[WARN]</code> / <code>[FAIL]</code> per line:</p>
+<ul>
+<li>R ≥ 4.2 and the admiral set (<code>admiral</code> ≥ 1.2.0, <code>dplyr</code>, <code>lubridate</code>, <code>pharmaversesdtm</code>, <code>pharmaverseadam</code>, <code>metacore</code>, <code>xportr</code>)</li>
+<li>The GSD set (<code>gsDesign</code>, <code>gsDesign2</code>, <code>lrstat</code>, <code>graphicalMCP</code>, <code>jsonlite</code>)</li>
+<li>Python ≥ 3.8 with <code>python-docx</code></li>
+</ul>
+<p><strong>All <code>[ OK ]</code> → you’re ready.</strong> Any <code>[FAIL]</code> → install commands are in <code>README.md</code>.</p>
+<aside class="notes">
+<p><code>check_setup.R</code> is base-R only (no package needed to run it) and installs nothing — it only reports. On Windows it skips the Microsoft Store <code>python3.exe</code> alias and finds a real interpreter via <code>py -3</code>.</p>
+<p>If the Workbench image is pre-provisioned with everything installed, this slide becomes a 10-second confirmation rather than an install step.</p>
+<p>[CONFIRM WITH JEFF: is the image pre-provisioned, or do attendees run the README install commands first? That changes how much time this slide needs.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="you-should-now-see" class="slide level2" data-number="2.4">
+<h2><span class="header-section-number">2.4</span> You should now see…</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Ready-state checklist</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Positron open in your browser, with the workshop repo in the Explorer</li>
+<li><code>check_setup.R</code> output showing <strong>all checks passed</strong> (no red)</li>
+<li>An R console and a Python console both available</li>
+</ul>
+<aside class="notes">
+<p>[CONFIRM WITH JEFF: replace with an actual screenshot of the ready state, or a precise description of what attendees see. Consider a projected reference image so people can self-check without flagging down a helper.]</p>
+<p>Do not start Section A until everyone confirms this slide.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="section-a-adam-generation-1" class="title-slide slide level1 unnumbered center">
+<h1>Section A — ADaM generation</h1>
+
+</section>
+<section id="section-a-what-well-do" class="slide level2" data-number="2.5">
+<h2><span class="header-section-number">2.5</span> Section A — what we’ll do</h2>
+<p>Drive the <strong>admiral</strong> skill family to derive ADaM datasets from SDTM:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Skill</th>
+<th>Produces</th>
+<th>Depends on</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>admiral</code> (parent)</td>
+<td>Shared conventions — no output</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><code>admiral-adsl</code></td>
+<td>ADSL (subject-level)</td>
+<td>SDTM DM, EX, DS</td>
+</tr>
+<tr class="odd">
+<td><code>admiral-adae</code></td>
+<td>ADAE (adverse events, TEAE flag)</td>
+<td>ADSL + SDTM AE</td>
+</tr>
+<tr class="even">
+<td><code>admiral-bds</code></td>
+<td>ADVS / ADLB (BDS findings)</td>
+<td>ADSL + SDTM VS / LB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ADSL must be derived first</strong> — its treatment vars and population flags feed every downstream dataset.</p>
+<aside class="notes">
+<p>Source data is the pharmaverse public CDISC test data (<code>pharmaversesdtm</code> / <code>pharmaverseadam</code>) — no proprietary data involved, safe to run live.</p>
+<p>The agent reads <code>skills/admiral/SKILL.md</code> (shared conventions) first, then the child skill for the dataset in question.</p>
+<p>[CONFIRM WITH JEFF: time budget for Section A.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-a-how-the-skill-behaves" class="slide level2" data-number="2.6">
+<h2><span class="header-section-number">2.6</span> Section A — how the skill behaves</h2>
+<p>When you ask for a derivation, the skilled agent will:</p>
+<ul>
+<li>Generate code <strong>section by section</strong>, not one giant block</li>
+<li>Use the native pipe <code>|&gt;</code> and <code>exprs()</code> for admiral verb arguments</li>
+<li>Use admiral date functions (never <code>as.Date()</code> on <code>--DTC</code>)</li>
+<li>Emit <code>"Y"</code>/<code>NA</code> flags — never <code>"N"</code></li>
+<li>Drop a <strong><code># REVIEW:</code></strong> comment at every protocol-specific decision</li>
+<li>Add <code>stopifnot()</code> assertions (one row per USUBJID, source uniqueness, …)</li>
+</ul>
+<aside class="notes">
+<p>Tell attendees what to look for when reviewing: the <code># REVIEW:</code> markers are where <em>they</em> — not the agent — own the decision (population flag definitions, disposition mapping, age cut-points, TEAE window). The skill deliberately does not guess these.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-a-hands-on-exercise" class="slide level2" data-number="2.7">
+<h2><span class="header-section-number">2.7</span> Section A — hands-on exercise</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Exercise content pending — to be supplied by Jeff</p>
+</div>
+</div>
+</div>
+<p>Needs to be specified before this deck is final:</p>
+<ul>
+<li>Exact prompt(s) attendees give the agent</li>
+<li>Which SDTM domains / dataset (pharmaversesdtm <code>dm</code>/<code>ex</code>/<code>ds</code>/<code>ae</code>/<code>vs</code>/<code>lb</code>?)</li>
+<li>Step sequence: ADSL first, then ADAE and/or BDS?</li>
+<li>What “done” looks like — which variables / checks to verify</li>
+<li>Stretch goal for fast finishers</li>
+</ul>
+<aside class="notes">
+<p>DO NOT invent exercise steps. Jeff to provide the exact walkthrough — prompts, expected agent behaviour, review checkpoints, and the QC the attendee runs at the end. Once provided, expand this into the needed number of step slides.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-a-debrief" class="slide level2" data-number="2.8">
+<h2><span class="header-section-number">2.8</span> Section A — debrief</h2>
+<ul>
+<li>Where did the agent place <code># REVIEW:</code> markers, and were they the right places?</li>
+<li>What did <em>you</em> have to decide that the skill correctly refused to guess?</li>
+<li>How does this compare to writing the derivation from scratch?</li>
+</ul>
+<aside class="notes">
+<p>Reinforce the disclaimer: the output is a drafting aid. Independent QC against your own process is still required before any regulated use.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="section-b-group-sequential-design-1" class="title-slide slide level1 unnumbered center">
+<h1>Section B — Group sequential design</h1>
+
+</section>
+<section id="section-b-what-well-do" class="slide level2" data-number="2.9">
+<h2><span class="header-section-number">2.9</span> Section B — what we’ll do</h2>
+<p>Drive the <strong>group-sequential-design</strong> skill to design a survival trial:</p>
+<ul>
+<li>Survival endpoints (OS / PFS / DFS), interim + final analyses</li>
+<li>Alpha-spending boundaries (Lan-DeMets, Hwang-Shih-DeCani)</li>
+<li>Sample-size / event targets (N-first approach)</li>
+<li>Graphical multiplicity for co-primary / multi-population designs</li>
+<li><strong><code>lrstat</code> simulation</strong> to verify the analytic design</li>
+<li>A template-driven <strong>Word report</strong> (<code>gsd_report.py</code>)</li>
+</ul>
+<aside class="notes">
+<p>Scope note the skill enforces: standard group sequential designs only. Adaptive enrichment, sample-size re-estimation, seamless dose-selection, platform trials, and non-survival primary endpoints are explicitly out of scope — the skill will say so and stop.</p>
+<p>Tools: gsDesign, gsDesign2, lrstat, graphicalMCP, jsonlite (R) + python-docx.</p>
+<p>[CONFIRM WITH ERIC: time budget for Section B.]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-b-how-the-skill-behaves" class="slide level2" data-number="2.10">
+<h2><span class="header-section-number">2.10</span> Section B — how the skill behaves</h2>
+<ul>
+<li>Asks design questions <strong>one at a time</strong>, in plain language, no defaults offered</li>
+<li>Summarises all inputs in a table and waits for your confirmation</li>
+<li>Computes the design, then <strong>checks interim-analysis timing</strong> against enrollment and minimum-gap constraints</li>
+<li><strong>Verifies by simulation</strong> before delivering — power within ±2 pp, type I error within ±0.5 pp</li>
+<li>Writes every number to <code>gsd_results.json</code>; the report reads from there (no hardcoded values)</li>
+</ul>
+<aside class="notes">
+<p>The one-artifact-per-turn pacing in the skill means the agent writes a script, stops, runs it, stops, etc. That is intentional — it keeps each step reviewable.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-b-hands-on-exercise" class="slide level2" data-number="2.11">
+<h2><span class="header-section-number">2.11</span> Section B — hands-on exercise</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Exercise content pending — to be supplied and reviewed by Eric</p>
+</div>
+</div>
+</div>
+<p>Needs to be specified before this deck is final:</p>
+<ul>
+<li>The trial scenario (disease, line of therapy, endpoint(s), HR, medians)</li>
+<li>Single vs.&nbsp;co-primary; single vs.&nbsp;multi-population</li>
+<li>Which design decisions attendees make vs.&nbsp;which are pre-set</li>
+<li>Expected outputs to inspect (<code>gsd_results.json</code>, multiplicity diagram, <code>gsd_report.docx</code>)</li>
+<li>Stretch goal (e.g.&nbsp;an NPH sensitivity evaluation)</li>
+</ul>
+<aside class="notes">
+<p>FLAG: this section needs Eric’s direct input and review. Do not draft a scenario — the Q&amp;A flow, the specific numbers, and the “what good looks like” checkpoints should be Eric’s. Once provided, expand into step slides mirroring Section A’s structure.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-b-debrief" class="slide level2" data-number="2.12">
+<h2><span class="header-section-number">2.12</span> Section B — debrief</h2>
+<ul>
+<li>Which constraint was binding — event target, minimum follow-up, or minimum gap?</li>
+<li>Did the simulation confirm the analytic design on the first try?</li>
+<li>What would you change about the design, and what lever would you pull?</li>
+</ul>
+<aside class="notes">
+<p>Same disclaimer applies: a designed-and-verified draft is still a draft. The statistician owns the final design.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="wrap-up" class="title-slide slide level1 center" data-number="3">
+<h1><span class="header-section-number">3</span> Wrap-up</h1>
+
+</section>
+<section id="what-you-did-today" class="slide level2" data-number="3.1">
+<h2><span class="header-section-number">3.1</span> What you did today</h2>
+<ul>
+<li>Ran the <strong>admiral</strong> skills to derive ADaM datasets from SDTM</li>
+<li>Ran the <strong>group-sequential-design</strong> skill to design and verify a survival trial</li>
+<li>Saw the same interaction model work across two very different domains</li>
+</ul>
+<p>All driven by describing the task in natural language — the skill supplied the discipline.</p>
+<aside class="notes">
+<p>Land the through-line: the value is not “AI writes code fast.” It is that a reviewed, version-controlled workflow runs consistently every time, with review markers exactly where human judgment is required.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="take-it-with-you" class="slide level2" data-number="3.2">
+<h2><span class="header-section-number">3.2</span> Take it with you</h2>
+<ul>
+<li><strong>Workshop repo:</strong> <a href="https://github.com/jeffreyad/rpharma-2026-workshop" class="uri">https://github.com/jeffreyad/rpharma-2026-workshop</a> [CONFIRM WITH JEFF: canonical URL]</li>
+<li><strong>pharma-skills:</strong> <a href="https://github.com/RConsortium/pharma-skills/tree/main" class="uri">https://github.com/RConsortium/pharma-skills/tree/main</a> — full catalog, LIFECYCLE.md, benchmarking</li>
+<li><strong>admiral:</strong> <a href="https://pharmaverse.github.io/admiral/" class="uri">https://pharmaverse.github.io/admiral/</a> · <a href="https://www.cdisc.org/standards/foundational/adam">CDISC ADaMIG v1.3</a></li>
+<li><strong>gsDesign / gsDesign2 / lrstat:</strong> on CRAN</li>
+<li><strong>Submissions Working Group:</strong> <a href="https://rconsortium.github.io/submissions-wg/" class="uri">https://rconsortium.github.io/submissions-wg/</a></li>
+</ul>
+<p>Install into your own project:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">npx</span> skills add RConsortium/pharma-skills <span class="at">--skill</span> admiral-adsl <span class="at">--skill</span> group-sequential-design</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>Also mention Option A from the repo README — open the repo as your project and let its CLAUDE.md route the agent to each skill; just set your local Rscript path for the GSD skill.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="disclaimer" class="slide level2" data-number="3.3">
+<h2><span class="header-section-number">3.3</span> Disclaimer</h2>
+<p>These skills produce <strong>drafting aids, not validated deliverables</strong>.</p>
+<p>LLM output can be wrong or vary between runs. Independently verify all generated code and results against your own QC process before they inform any regulatory, clinical, safety, or GxP-regulated activity, and comply with your organization’s policies.</p>
+<p>The skills bundle scripts that execute in your environment — review a skill’s contents before running it, and only supply data you are permitted to use.</p>
+<aside class="notes">
+<p>Say this one out loud, verbatim if needed. It is the single most important slide for a pharma audience.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="thank-you" class="slide level2" data-number="3.4">
+<h2><span class="header-section-number">3.4</span> Thank you</h2>
+<p><strong>Jeff Dickinson</strong> Navitas Data Sciences · admiral Core Team [CONFIRM WITH JEFF: contact — email / GitHub / LinkedIn]</p>
+<p><strong>Eric Zhang</strong> [CONFIRM WITH ERIC: affiliation and contact]</p>
+<p>Questions?</p>
+<aside class="notes">
+<p>Leave this up during Q&amp;A. Have the repo URL and the pharma-skills URL also written somewhere persistent (whiteboard / pinned chat message) for people photographing slides.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>R/Pharma 2026 Workshop</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1200,
+
+        height: 720,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
