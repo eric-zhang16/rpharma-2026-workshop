@@ -9,9 +9,10 @@
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <meta name="author" content="Jeff Dickinson">
-  <meta name="author" content="Eric Zhang">
-  <title>AI Skills for Clinical Trial Design &amp; ADaM Derivation</title>
+  <meta name="author" content="Jeff Dickinson, PhD">
+  <meta name="author" content="Eric Zhang, PhD">
+  <meta name="dcterms.date" content="2026-10-01">
+  <title>Pharma Skills Workshop</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -197,46 +198,48 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">AI Skills for Clinical Trial Design &amp; ADaM Derivation</h1>
-  <p class="subtitle">A hands-on workshop · R/Pharma 2026</p>
+  <h1 class="title">Pharma Skills Workshop</h1>
+  <p class="subtitle">Hands-On AI Skills for Clinical Programming &amp; Biostatistics</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Jeff Dickinson 
+Jeff Dickinson, PhD 
 </div>
         <p class="quarto-title-affiliation">
-            Navitas Data Sciences · admiral Core Team
+            Associate Director, Clinical Reporting · Navitas Data Sciences
           </p>
     </div>
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Eric Zhang 
+Eric Zhang, PhD 
 </div>
         <p class="quarto-title-affiliation">
-            [CONFIRM WITH ERIC: affiliation]
+            Senior Director, Biostatistics · Eikon Therapeutics
           </p>
     </div>
 </div>
 
+  <p class="date">October 1, 2026</p>
 </section>
 <section>
 <section id="welcome" class="title-slide slide level1 unnumbered center">
 <h1>Welcome</h1>
 
 </section>
-<section id="ai-skills-for-clinical-trial-design-adam-derivation" class="slide level2" data-number="0.1">
-<h2><span class="header-section-number">0.1</span> AI Skills for Clinical Trial Design &amp; ADaM Derivation</h2>
-<p><strong>R/Pharma 2026 Workshop</strong></p>
+<section id="pharma-skills-workshop" class="slide level2" data-number="0.1">
+<h2><span class="header-section-number">0.1</span> Pharma Skills Workshop</h2>
+<p><strong>Hands-On AI Skills for Clinical Programming &amp; Biostatistics</strong></p>
+<p>R/Pharma Virtual 2026 · Thursday, October 1, 2026 · 8:00–11:00 AM CDT · Virtual</p>
 <p>Presenters:</p>
 <ul>
-<li><strong>Jeff Dickinson</strong> — Navitas Data Sciences; admiral Core Team</li>
-<li><strong>Eric Zhang</strong> — [CONFIRM WITH ERIC: affiliation / title]</li>
+<li><strong>Jeff Dickinson, PhD</strong> — Associate Director, Clinical Reporting, Navitas Data Sciences</li>
+<li><strong>Eric Zhang, PhD</strong> — Senior Director, Biostatistics, Eikon Therapeutics</li>
 </ul>
 <aside class="notes">
-<p>Housekeeping to cover verbally: total session length, break schedule, how to ask for help during hands-on time, and where the repo lives.</p>
-<p>[CONFIRM WITH JEFF: exact workshop date, room, and session length so we can state it here or on a housekeeping slide.]</p>
-<p>One-line framing for the opening: this is a working session — by the end you will have run two production-style clinical-programming workflows end to end, driven entirely by describing the task to an AI agent in plain language.</p>
+<p>Virtual housekeeping to cover verbally: how to ask questions (chat vs. unmute), how help works during hands-on time (breakout rooms / screen share), and where the repo and environment links are posted (pin them in chat).</p>
+<p>Three-hour block, 8:00–11:00 CDT. One break around the midpoint.</p>
+<p>Opening framing: by the end you will have run two production-style clinical workflows end to end by describing the task to an AI agent in plain language — and you will have modified a skill and sketched one of your own.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -249,16 +252,19 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="what-you-will-walk-out-with" class="slide level2" data-number="0.2">
-<h2><span class="header-section-number">0.2</span> What you will walk out with</h2>
+<section id="what-youll-do" class="slide level2" data-number="0.2">
+<h2><span class="header-section-number">0.2</span> What you’ll do</h2>
 <ul>
-<li>A working mental model of what an <strong>agent skill</strong> is and why it changes clinical programming</li>
-<li>Hands-on experience running the <strong>admiral ADaM skills</strong> (ADSL → ADAE / BDS)</li>
-<li>Hands-on experience running the <strong>group sequential design skill</strong> for a survival trial</li>
-<li>A local setup you can keep using after the workshop</li>
+<li><strong>Run AI skills on real-world exercises</strong> — ADaM generation and group sequential design</li>
+<li><strong>See how skills are structured</strong> and how they interact with the AI model</li>
+<li><strong>Modify or extend</strong> an existing skill</li>
+<li><strong>Create a simple skill of your own</strong>, with instructor support</li>
+<li>Leave with <strong>practical ideas</strong> for applying AI skills to your own work</li>
 </ul>
+<p><em>No prior AI-skills experience required.</em></p>
 <aside class="notes">
-<p>Emphasise: these skills produce <em>drafting aids, not validated deliverables</em>. Everything the agent writes still goes through your own QC before any regulatory, clinical, or GxP-regulated use. We will repeat this point in each section.</p>
+<p>This mirrors the official session description. Emphasise the last two bullets — this workshop is not just “watch the agent work,” it’s “learn to build the thing that makes the agent reliable.”</p>
+<p>Repeat throughout: these skills produce <em>drafting aids, not validated deliverables</em>. Independent QC still required before any regulated use.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -271,17 +277,51 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="agenda" class="slide level2" data-number="0.3">
-<h2><span class="header-section-number">0.3</span> Agenda</h2>
+<section id="who-this-is-for" class="slide level2" data-number="0.3">
+<h2><span class="header-section-number">0.3</span> Who this is for</h2>
+<ul>
+<li>Statistical programmers</li>
+<li>Biostatisticians</li>
+<li>Clinical data scientists</li>
+<li>Anyone interested in practical AI applications in pharma R&amp;D</li>
+</ul>
+<p>Pick the exercises closest to your work — the ADaM thread, the group sequential design thread, or both.</p>
+<aside class="notes">
+<p>Set expectations: programmers may go deep on Section A, statisticians on Section B, and everyone converges for the skill-authoring section. The environment is preconfigured so no one loses time on setup.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="agenda" class="slide level2" data-number="0.4">
+<h2><span class="header-section-number">0.4</span> Agenda</h2>
 <ol type="1">
 <li>Skills overview — what they are, why they matter</li>
-<li>Environment setup — sign in, launch Positron, check packages</li>
+<li>Environment orientation — sign in, confirm you’re ready</li>
 <li><strong>Section A</strong> — ADaM generation (Jeff)</li>
 <li><strong>Section B</strong> — Group sequential design (Eric)</li>
-<li>Wrap-up and where to go next</li>
+<li><strong>Section C</strong> — Modify, extend, and build a skill</li>
+<li>Wrap-up — ideas to take back</li>
 </ol>
+<p>Three hours, one break near the midpoint.</p>
 <aside class="notes">
-<p>[CONFIRM WITH JEFF/ERIC: time budget per section — fill in once total session length is known. Rough split to confirm: ~15 min overview, ~15 min setup, ~45 min Section A, ~45 min Section B, ~10 min wrap-up.]</p>
+<p>[CONFIRM WITH JEFF/ERIC: split of the 3-hour block.] Proposed, to confirm:</p>
+<ul>
+<li>8:00–8:25 Welcome + skills overview</li>
+<li>8:25–8:40 Environment orientation</li>
+<li>8:40–9:35 Section A — ADaM</li>
+<li>9:35–9:45 Break</li>
+<li>9:45–10:40 Section B — group sequential design</li>
+<li>10:40–10:55 Section C — modify / build a skill</li>
+<li>10:55–11:00 Wrap-up</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -334,6 +374,7 @@ Eric Zhang
 <p>The agent then reproduces that discipline on every run.</p>
 <aside class="notes">
 <p>The point is consistency and traceability, not just speed. A skilled run produces code that already has review markers where a human must make a protocol call — the reviewer’s attention is directed, not diffused.</p>
+<p>Same argument on the biostatistics side: the group sequential design skill encodes scope checks, the N-first algorithm, IA-timing constraints, and a mandatory simulation-verification step.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -388,7 +429,7 @@ Eric Zhang
 <p>The full catalog also includes <code>sdtm-oak</code>, <code>clinical-trial-simulation</code>, <code>statistical-reviewer</code>, <code>rounding</code>, and more, plus a skill development <strong>lifecycle</strong> and community benchmarking.</p>
 <aside class="notes">
 <p>Every skill in this workshop repo is copied from pharma-skills without changes to its derivation logic. Credit: admiral skills — Jeff Dickinson (Navitas); group-sequential-design — Eric Zhang.</p>
-<p>Point people at the LIFECYCLE.md doc if they want to contribute a skill.</p>
+<p>Point people at LIFECYCLE.md if they want to contribute a skill — it connects to Section C.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -401,28 +442,33 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="two-threads-today" class="slide level2" data-number="1.5">
-<h2><span class="header-section-number">1.5</span> Two threads today</h2>
+<section id="three-threads-today" class="slide level2" data-number="1.5">
+<h2><span class="header-section-number">1.5</span> Three threads today</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<h3 data-number="1.5.1" id="section-a-adam-generation"><span class="header-section-number">1.5.1</span> Section A — ADaM generation</h3>
+<div class="column" style="width:33%;">
+<h3 data-number="1.5.1" id="a-adam-generation"><span class="header-section-number">1.5.1</span> A · ADaM generation</h3>
 <p>Derive analysis datasets from SDTM with <strong>{admiral}</strong>:</p>
 <ul>
-<li><code>admiral</code> (parent conventions)</li>
+<li><code>admiral</code> (parent)</li>
 <li><code>admiral-adsl</code> → <code>admiral-adae</code> → <code>admiral-bds</code></li>
 </ul>
-<p>Output: QC-ready, review-annotated R.</p>
-</div><div class="column" style="width:50%;">
-<h3 data-number="1.5.2" id="section-b-group-sequential-design"><span class="header-section-number">1.5.2</span> Section B — Group sequential design</h3>
+</div><div class="column" style="width:33%;">
+<h3 data-number="1.5.2" id="b-group-sequential-design"><span class="header-section-number">1.5.2</span> B · Group sequential design</h3>
 <p>Design a survival trial with <strong>gsDesign / gsDesign2 / lrstat</strong>:</p>
 <ul>
-<li>Spending-function boundaries, sample size, multiplicity</li>
-<li>Simulation-based verification</li>
-<li>Template-driven Word report</li>
+<li>Boundaries, sample size, multiplicity</li>
+<li>Simulation verification + Word report</li>
+</ul>
+</div><div class="column" style="width:33%;">
+<h3 data-number="1.5.3" id="c-build-a-skill"><span class="header-section-number">1.5.3</span> C · Build a skill</h3>
+<ul>
+<li>Read a <code>SKILL.md</code> and its references</li>
+<li>Modify / extend one</li>
+<li>Sketch your own</li>
 </ul>
 </div></div>
 <aside class="notes">
-<p>Both threads share the same interaction model: you describe the task in natural language, the agent loads the matching skill, and you review what it produces. The domains differ; the workflow does not.</p>
+<p>All three share one interaction model: describe the task in natural language, the agent loads the matching skill, you review what it produces. The domains differ; the workflow does not.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -436,20 +482,43 @@ Eric Zhang
       }</style></aside>
 </section></section>
 <section>
-<section id="environment-setup" class="title-slide slide level1 center" data-number="2">
-<h1><span class="header-section-number">2</span> Environment setup</h1>
+<section id="environment-orientation" class="title-slide slide level1 center" data-number="2">
+<h1><span class="header-section-number">2</span> Environment orientation</h1>
 
 </section>
-<section id="sign-in-to-posit-workbench" class="slide level2" data-number="2.1">
-<h2><span class="header-section-number">2.1</span> 1. Sign in to Posit Workbench</h2>
+<section id="no-setup-required" class="slide level2" data-number="2.1">
+<h2><span class="header-section-number">2.1</span> No setup required</h2>
+<p>The workshop runs in a <strong>preconfigured environment</strong> with:</p>
+<ul>
+<li>Access to the AI model, already wired up</li>
+<li>A library of pharma-focused skills, pre-installed</li>
+<li>All R and Python packages for both threads, already installed</li>
+</ul>
+<p>You do <strong>not</strong> need to install anything or configure anything in advance.</p>
+<aside class="notes">
+<p>This is straight from the session description — “participants will work in a preconfigured environment … without any advance setup.” The next few slides are about <em>getting in</em> and <em>confirming</em>, not installing.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="sign-in" class="slide level2" data-number="2.2">
+<h2><span class="header-section-number">2.2</span> 1. Sign in</h2>
 <p>Go to <strong><a href="https://workshop.posit.team/" class="uri">https://workshop.posit.team/</a></strong> and sign in.</p>
 <ul>
 <li>Choose <strong>Sign in with OpenID</strong> <em>or</em> <strong>Sign in with GitHub</strong></li>
 <li>Use the same account for the whole session</li>
 </ul>
 <aside class="notes">
-<p>Mirror the reference deck’s sign-in style: walk the room through it live, confirm everyone is in before moving on. If someone’s GitHub sign-in fails, have them try the OpenID option.</p>
-<p>[CONFIRM WITH JEFF: is there a per-attendee username/password, an access code, or is it self-service GitHub/OpenID only? Confirm the exact wording of the sign-in options shown on workshop.posit.team.]</p>
+<p>Walk the room through it live in the webinar; confirm everyone is in via chat before moving on. If GitHub sign-in fails, try the OpenID option.</p>
+<p>[CONFIRM WITH JEFF: is there a per-attendee access code / invite, or is it self-service GitHub/OpenID only? Confirm the exact wording of the sign-in options shown on workshop.posit.team.]</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -462,13 +531,12 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="launch-a-positron-session" class="slide level2" data-number="2.2">
-<h2><span class="header-section-number">2.2</span> 2. Launch a Positron session</h2>
-<p>In Workbench, start a new session and choose the <strong>Positron</strong> IDE.</p>
-<p><strong>Why Positron?</strong> It supports <strong>both R and Python</strong> in one IDE — Section A is R (admiral), and Section B’s report generator is Python (<code>python-docx</code>). One session covers both threads.</p>
+<section id="open-your-positron-session" class="slide level2" data-number="2.3">
+<h2><span class="header-section-number">2.3</span> 2. Open your Positron session</h2>
+<p>In Workbench, start the session and choose the <strong>Positron</strong> IDE.</p>
+<p><strong>Why Positron?</strong> One IDE, <strong>both R and Python</strong> — Section A is R (admiral), Section B’s report generator is Python (<code>python-docx</code>), and Section C touches both. One session covers everything.</p>
 <aside class="notes">
-<p>[CONFIRM WITH JEFF: session resource preset to pick (CPU / memory), and the project / working directory attendees should land in — e.g.&nbsp;a pre-cloned copy of this repo, or do they clone it themselves as the first step?]</p>
-<p>If attendees clone it themselves: <code>git clone https://github.com/jeffreyad/rpharma-2026-workshop.git</code> [CONFIRM WITH JEFF: canonical repo URL.]</p>
+<p>[CONFIRM WITH JEFF: does each attendee land in a pre-cloned copy of the workshop repo, or clone it themselves as step one? <code>git clone https://github.com/jeffreyad/rpharma-2026-workshop.git</code>]</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -481,21 +549,19 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="run-the-setup-check" class="slide level2" data-number="2.3">
-<h2><span class="header-section-number">2.3</span> 3. Run the setup check</h2>
-<p>From the repo root, run the environment check script:</p>
+<section id="confirm-youre-ready" class="slide level2" data-number="2.4">
+<h2><span class="header-section-number">2.4</span> 3. Confirm you’re ready</h2>
+<p>From the repo root:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">source</span>(<span class="st">"check_setup.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>It verifies, printing <code>[ OK ]</code> / <code>[WARN]</code> / <code>[FAIL]</code> per line:</p>
+<p>Prints <code>[ OK ]</code> / <code>[WARN]</code> / <code>[FAIL]</code> per line for:</p>
 <ul>
 <li>R ≥ 4.2 and the admiral set (<code>admiral</code> ≥ 1.2.0, <code>dplyr</code>, <code>lubridate</code>, <code>pharmaversesdtm</code>, <code>pharmaverseadam</code>, <code>metacore</code>, <code>xportr</code>)</li>
 <li>The GSD set (<code>gsDesign</code>, <code>gsDesign2</code>, <code>lrstat</code>, <code>graphicalMCP</code>, <code>jsonlite</code>)</li>
 <li>Python ≥ 3.8 with <code>python-docx</code></li>
 </ul>
-<p><strong>All <code>[ OK ]</code> → you’re ready.</strong> Any <code>[FAIL]</code> → install commands are in <code>README.md</code>.</p>
+<p>In the preconfigured environment every line should be <strong><code>[ OK ]</code></strong>.</p>
 <aside class="notes">
-<p><code>check_setup.R</code> is base-R only (no package needed to run it) and installs nothing — it only reports. On Windows it skips the Microsoft Store <code>python3.exe</code> alias and finds a real interpreter via <code>py -3</code>.</p>
-<p>If the Workbench image is pre-provisioned with everything installed, this slide becomes a 10-second confirmation rather than an install step.</p>
-<p>[CONFIRM WITH JEFF: is the image pre-provisioned, or do attendees run the README install commands first? That changes how much time this slide needs.]</p>
+<p><code>check_setup.R</code> is base-R only and installs nothing — it just reports. It exists as a fast confidence check that your session is intact. If anything is <code>[FAIL]</code> in the workshop environment, flag it in chat — that’s an environment issue, not something you fix.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -508,8 +574,8 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="you-should-now-see" class="slide level2" data-number="2.4">
-<h2><span class="header-section-number">2.4</span> You should now see…</h2>
+<section id="you-should-now-see" class="slide level2" data-number="2.5">
+<h2><span class="header-section-number">2.5</span> You should now see…</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -529,8 +595,8 @@ Eric Zhang
 <li>An R console and a Python console both available</li>
 </ul>
 <aside class="notes">
-<p>[CONFIRM WITH JEFF: replace with an actual screenshot of the ready state, or a precise description of what attendees see. Consider a projected reference image so people can self-check without flagging down a helper.]</p>
-<p>Do not start Section A until everyone confirms this slide.</p>
+<p>[CONFIRM WITH JEFF: replace with an actual screenshot of the ready state, or a precise description. Consider sharing a reference screenshot in chat so people can self-check without unmuting.]</p>
+<p>Do not start Section A until everyone confirms this in chat.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -544,12 +610,12 @@ Eric Zhang
       }</style></aside>
 </section></section>
 <section>
-<section id="section-a-adam-generation-1" class="title-slide slide level1 unnumbered center">
+<section id="section-a-adam-generation" class="title-slide slide level1 unnumbered center">
 <h1>Section A — ADaM generation</h1>
 
 </section>
-<section id="section-a-what-well-do" class="slide level2" data-number="2.5">
-<h2><span class="header-section-number">2.5</span> Section A — what we’ll do</h2>
+<section id="section-a-what-well-do" class="slide level2" data-number="2.6">
+<h2><span class="header-section-number">2.6</span> Section A — what we’ll do</h2>
 <p>Drive the <strong>admiral</strong> skill family to derive ADaM datasets from SDTM:</p>
 <table class="caption-top">
 <thead>
@@ -584,9 +650,9 @@ Eric Zhang
 </table>
 <p><strong>ADSL must be derived first</strong> — its treatment vars and population flags feed every downstream dataset.</p>
 <aside class="notes">
-<p>Source data is the pharmaverse public CDISC test data (<code>pharmaversesdtm</code> / <code>pharmaverseadam</code>) — no proprietary data involved, safe to run live.</p>
+<p>Source data is the pharmaverse public CDISC test data (<code>pharmaversesdtm</code> / <code>pharmaverseadam</code>) — no proprietary data, safe to run live.</p>
 <p>The agent reads <code>skills/admiral/SKILL.md</code> (shared conventions) first, then the child skill for the dataset in question.</p>
-<p>[CONFIRM WITH JEFF: time budget for Section A.]</p>
+<p>[CONFIRM WITH JEFF: time budget for Section A within the 3-hour block.]</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -599,8 +665,8 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-a-how-the-skill-behaves" class="slide level2" data-number="2.6">
-<h2><span class="header-section-number">2.6</span> Section A — how the skill behaves</h2>
+<section id="section-a-how-the-skill-behaves" class="slide level2" data-number="2.7">
+<h2><span class="header-section-number">2.7</span> Section A — how the skill behaves</h2>
 <p>When you ask for a derivation, the skilled agent will:</p>
 <ul>
 <li>Generate code <strong>section by section</strong>, not one giant block</li>
@@ -624,8 +690,8 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-a-hands-on-exercise" class="slide level2" data-number="2.7">
-<h2><span class="header-section-number">2.7</span> Section A — hands-on exercise</h2>
+<section id="section-a-hands-on-exercise" class="slide level2" data-number="2.8">
+<h2><span class="header-section-number">2.8</span> Section A — hands-on exercise</h2>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -661,8 +727,8 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-a-debrief" class="slide level2" data-number="2.8">
-<h2><span class="header-section-number">2.8</span> Section A — debrief</h2>
+<section id="section-a-debrief" class="slide level2" data-number="2.9">
+<h2><span class="header-section-number">2.9</span> Section A — debrief</h2>
 <ul>
 <li>Where did the agent place <code># REVIEW:</code> markers, and were they the right places?</li>
 <li>What did <em>you</em> have to decide that the skill correctly refused to guess?</li>
@@ -683,12 +749,12 @@ Eric Zhang
       }</style></aside>
 </section></section>
 <section>
-<section id="section-b-group-sequential-design-1" class="title-slide slide level1 unnumbered center">
+<section id="section-b-group-sequential-design" class="title-slide slide level1 unnumbered center">
 <h1>Section B — Group sequential design</h1>
 
 </section>
-<section id="section-b-what-well-do" class="slide level2" data-number="2.9">
-<h2><span class="header-section-number">2.9</span> Section B — what we’ll do</h2>
+<section id="section-b-what-well-do" class="slide level2" data-number="2.10">
+<h2><span class="header-section-number">2.10</span> Section B — what we’ll do</h2>
 <p>Drive the <strong>group-sequential-design</strong> skill to design a survival trial:</p>
 <ul>
 <li>Survival endpoints (OS / PFS / DFS), interim + final analyses</li>
@@ -701,7 +767,7 @@ Eric Zhang
 <aside class="notes">
 <p>Scope note the skill enforces: standard group sequential designs only. Adaptive enrichment, sample-size re-estimation, seamless dose-selection, platform trials, and non-survival primary endpoints are explicitly out of scope — the skill will say so and stop.</p>
 <p>Tools: gsDesign, gsDesign2, lrstat, graphicalMCP, jsonlite (R) + python-docx.</p>
-<p>[CONFIRM WITH ERIC: time budget for Section B.]</p>
+<p>[CONFIRM WITH ERIC: time budget for Section B within the 3-hour block.]</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -714,8 +780,8 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-b-how-the-skill-behaves" class="slide level2" data-number="2.10">
-<h2><span class="header-section-number">2.10</span> Section B — how the skill behaves</h2>
+<section id="section-b-how-the-skill-behaves" class="slide level2" data-number="2.11">
+<h2><span class="header-section-number">2.11</span> Section B — how the skill behaves</h2>
 <ul>
 <li>Asks design questions <strong>one at a time</strong>, in plain language, no defaults offered</li>
 <li>Summarises all inputs in a table and waits for your confirmation</li>
@@ -737,8 +803,8 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-b-hands-on-exercise" class="slide level2" data-number="2.11">
-<h2><span class="header-section-number">2.11</span> Section B — hands-on exercise</h2>
+<section id="section-b-hands-on-exercise" class="slide level2" data-number="2.12">
+<h2><span class="header-section-number">2.12</span> Section B — hands-on exercise</h2>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -774,8 +840,8 @@ Eric Zhang
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-b-debrief" class="slide level2" data-number="2.12">
-<h2><span class="header-section-number">2.12</span> Section B — debrief</h2>
+<section id="section-b-debrief" class="slide level2" data-number="2.13">
+<h2><span class="header-section-number">2.13</span> Section B — debrief</h2>
 <ul>
 <li>Which constraint was binding — event target, minimum follow-up, or minimum gap?</li>
 <li>Did the simulation confirm the analytic design on the first try?</li>
@@ -783,6 +849,95 @@ Eric Zhang
 </ul>
 <aside class="notes">
 <p>Same disclaimer applies: a designed-and-verified draft is still a draft. The statistician owns the final design.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="section-c-modify-extend-and-build-a-skill" class="title-slide slide level1 unnumbered center">
+<h1>Section C — Modify, extend, and build a skill</h1>
+
+</section>
+<section id="anatomy-of-a-skill" class="slide level2" data-number="2.14">
+<h2><span class="header-section-number">2.14</span> Anatomy of a skill</h2>
+<p>Everything the agent needs is plain text and scripts in one folder:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href=""></a>skills/admiral/admiral-adsl/</span>
+<span id="cb2-2"><a href=""></a>├── SKILL.md                     # frontmatter + step-by-step workflow</span>
+<span id="cb2-3"><a href=""></a>├── references/</span>
+<span id="cb2-4"><a href=""></a>│   ├── admiral-functions.md     # function selection, pitfalls</span>
+<span id="cb2-5"><a href=""></a>│   └── adsl-conventions.md      # CDISC variable conventions</span>
+<span id="cb2-6"><a href=""></a>└── LICENSE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Frontmatter</strong> (<code>name</code>, <code>description</code>) is how the agent decides when to load the skill</li>
+<li><strong>Workflow</strong> is ordered steps with code patterns and <code># REVIEW:</code> rules</li>
+<li><strong>References</strong> are read on demand, not upfront</li>
+<li>A root <code>CLAUDE.md</code> routes the agent to the right skill</li>
+</ul>
+<aside class="notes">
+<p>Open <code>skills/admiral/SKILL.md</code> and <code>skills/group-sequential-design/SKILL.md</code> side by side and point out the shared shape: routing / scope check, then an ordered workflow, then references and bundled scripts.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-c-hands-on" class="slide level2" data-number="2.15">
+<h2><span class="header-section-number">2.15</span> Section C — hands-on</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Exercise content pending — to be defined by Jeff &amp; Eric</p>
+</div>
+</div>
+</div>
+<p>Two activities, instructor-supported:</p>
+<ol type="1">
+<li><strong>Modify or extend an existing skill</strong> — [CONFIRM: which skill, what change — e.g.&nbsp;add an <code>AGEGR1</code> cut-point convention, add a new ADAE grouping flag, add a futility-only GSD variant]</li>
+<li><strong>Sketch a skill of your own</strong> — [CONFIRM: starter template / scaffold provided? target task examples for different disciplines?]</li>
+</ol>
+<aside class="notes">
+<p>DO NOT invent the specific modification or the starter task. Jeff and Eric to decide: the smallest meaningful edit to an existing skill, and a scaffold (frontmatter + empty workflow headings) attendees fill in for a task from their own work. Keep this achievable in ~15 minutes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-c-debrief" class="slide level2" data-number="2.16">
+<h2><span class="header-section-number">2.16</span> Section C — debrief</h2>
+<ul>
+<li>What made the existing skill easy or hard to change?</li>
+<li>What is the smallest skill that would still be useful to you at work?</li>
+<li>Where would a skill help most in your current workflow?</li>
+</ul>
+<aside class="notes">
+<p>Bridge to the wrap-up: the goal is that people leave with a concrete idea they could prototype in the week after the workshop.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -805,11 +960,11 @@ Eric Zhang
 <ul>
 <li>Ran the <strong>admiral</strong> skills to derive ADaM datasets from SDTM</li>
 <li>Ran the <strong>group-sequential-design</strong> skill to design and verify a survival trial</li>
-<li>Saw the same interaction model work across two very different domains</li>
+<li>Read a skill’s internals, <strong>modified</strong> one, and <strong>sketched</strong> your own</li>
 </ul>
 <p>All driven by describing the task in natural language — the skill supplied the discipline.</p>
 <aside class="notes">
-<p>Land the through-line: the value is not “AI writes code fast.” It is that a reviewed, version-controlled workflow runs consistently every time, with review markers exactly where human judgment is required.</p>
+<p>Land the through-line: the value is not “AI writes code fast.” It is that a reviewed, version-controlled workflow runs consistently every time, with review markers exactly where human judgment is required — and that you can now build those workflows yourself.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -825,16 +980,16 @@ Eric Zhang
 <section id="take-it-with-you" class="slide level2" data-number="3.2">
 <h2><span class="header-section-number">3.2</span> Take it with you</h2>
 <ul>
-<li><strong>Workshop repo:</strong> <a href="https://github.com/jeffreyad/rpharma-2026-workshop" class="uri">https://github.com/jeffreyad/rpharma-2026-workshop</a> [CONFIRM WITH JEFF: canonical URL]</li>
+<li><strong>Workshop repo:</strong> <a href="https://github.com/jeffreyad/rpharma-2026-workshop" class="uri">https://github.com/jeffreyad/rpharma-2026-workshop</a></li>
 <li><strong>pharma-skills:</strong> <a href="https://github.com/RConsortium/pharma-skills/tree/main" class="uri">https://github.com/RConsortium/pharma-skills/tree/main</a> — full catalog, LIFECYCLE.md, benchmarking</li>
 <li><strong>admiral:</strong> <a href="https://pharmaverse.github.io/admiral/" class="uri">https://pharmaverse.github.io/admiral/</a> · <a href="https://www.cdisc.org/standards/foundational/adam">CDISC ADaMIG v1.3</a></li>
 <li><strong>gsDesign / gsDesign2 / lrstat:</strong> on CRAN</li>
 <li><strong>Submissions Working Group:</strong> <a href="https://rconsortium.github.io/submissions-wg/" class="uri">https://rconsortium.github.io/submissions-wg/</a></li>
 </ul>
 <p>Install into your own project:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">npx</span> skills add RConsortium/pharma-skills <span class="at">--skill</span> admiral-adsl <span class="at">--skill</span> group-sequential-design</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="ex">npx</span> skills add RConsortium/pharma-skills <span class="at">--skill</span> admiral-adsl <span class="at">--skill</span> group-sequential-design</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
-<p>Also mention Option A from the repo README — open the repo as your project and let its CLAUDE.md route the agent to each skill; just set your local Rscript path for the GSD skill.</p>
+<p>Also mention Option A from the repo README — open the repo as your project and let its CLAUDE.md route the agent to each skill; set your local Rscript path for the GSD skill.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -868,11 +1023,11 @@ Eric Zhang
 </section>
 <section id="thank-you" class="slide level2" data-number="3.4">
 <h2><span class="header-section-number">3.4</span> Thank you</h2>
-<p><strong>Jeff Dickinson</strong> Navitas Data Sciences · admiral Core Team [CONFIRM WITH JEFF: contact — email / GitHub / LinkedIn]</p>
-<p><strong>Eric Zhang</strong> [CONFIRM WITH ERIC: affiliation and contact]</p>
+<p><strong>Jeff Dickinson, PhD</strong> Associate Director, Clinical Reporting · Navitas Data Sciences [CONFIRM WITH JEFF: contact — email / GitHub / LinkedIn]</p>
+<p><strong>Eric Zhang, PhD</strong> Senior Director, Biostatistics · Eikon Therapeutics [CONFIRM WITH ERIC: contact — email / GitHub / LinkedIn]</p>
 <p>Questions?</p>
 <aside class="notes">
-<p>Leave this up during Q&amp;A. Have the repo URL and the pharma-skills URL also written somewhere persistent (whiteboard / pinned chat message) for people photographing slides.</p>
+<p>Leave this up during Q&amp;A. Post the repo URL and the pharma-skills URL in chat as a pinned message for people photographing / screenshotting slides.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -889,7 +1044,7 @@ Eric Zhang
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>R/Pharma 2026 Workshop</p>
+<p>Pharma Skills Workshop · R/Pharma Virtual 2026</p>
 </div>
 </div></div>
 
