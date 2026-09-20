@@ -6,8 +6,8 @@
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
 
   <meta name="author" content="Jeff Dickinson, PhD">
   <meta name="author" content="Eric Zhang, PhD">
@@ -257,8 +257,7 @@ Eric Zhang, PhD
 <ul>
 <li><strong>Run AI skills on real-world exercises</strong> — ADaM generation and group sequential design</li>
 <li><strong>See how skills are structured</strong> and how they interact with the AI model</li>
-<li><strong>Modify or extend</strong> an existing skill</li>
-<li><strong>Create a simple skill of your own</strong>, with instructor support</li>
+<li><strong>Practice using the skills</strong>, with instructor support</li>
 <li>Leave with <strong>practical ideas</strong> for applying AI skills to your own work</li>
 </ul>
 <p><em>No prior AI-skills experience required.</em></p>
@@ -307,7 +306,7 @@ Eric Zhang, PhD
 <li>Environment orientation — sign in, confirm you’re ready</li>
 <li><strong>Section A</strong> — ADaM generation (Jeff)</li>
 <li><strong>Section B</strong> — Group sequential design (Eric)</li>
-<li><strong>Section C</strong> — Modify, extend, and build a skill</li>
+<li><strong>Section C</strong> — Practice using the skills</li>
 <li>Wrap-up — ideas to take back</li>
 </ol>
 <p>Three hours, one break near the midpoint.</p>
@@ -451,7 +450,7 @@ Eric Zhang, PhD
 </section>
 <section id="skills-vs.-no-skills-group-sequential-design" class="slide level2" data-number="1.4">
 <h2><span class="header-section-number">1.4</span> Skills vs.&nbsp;no skills — group sequential design</h2>
-<p><code>group-sequential-design</code> skill — 15 trial-design scenarios, 3 models (Claude Sonnet / Opus, Gemini Flash), April 2026:</p>
+<p><code>group-sequential-design</code> skill — 21 trial-design scenarios, 3 models (Claude Sonnet / Opus, Gemini Flash), May 2026:</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -463,27 +462,23 @@ Eric Zhang, PhD
 <tbody>
 <tr class="odd">
 <td>Avg score across scenarios</td>
-<td><strong>73%</strong></td>
-<td>51%</td>
+<td><strong>90%</strong></td>
+<td>62%</td>
 </tr>
 <tr class="even">
 <td>Scenario wins</td>
-<td><strong>10</strong></td>
-<td>3</td>
+<td><strong>16</strong></td>
+<td>1</td>
 </tr>
 <tr class="odd">
 <td>Ties</td>
-<td>2</td>
-<td>2</td>
+<td>4</td>
+<td>4</td>
 </tr>
 </tbody>
 </table>
-<p>Standouts: <strong>83% vs 0%</strong> — no-skill crashed on <code>gsSurv()</code> across 7 attempts; <strong>100% vs 44%</strong> — skill self-detected non-proportional hazards and sized 390 events vs 229 (the no-skill design would run at ~28% power).</p>
 <aside class="notes">
-<p>Source: <code>benchmark_analysis_2026-04-28.md</code> in RConsortium/pharma-skills.</p>
-<p>All 3 no-skill “wins” were skill scope-gaps (adaptive enrichment, a futility-only subgroup look) or a sandbox routing bug — not base-model superiority.</p>
-<p>What the skill reliably added across the wins: correct <code>gsSurv()</code> parameterisation (unequal allocation, piecewise hazard, non-constant enrollment); enforced structured artifacts (JSON + multiplicity PNG + Word report); PFS-overpower detection with alpha-reallocation guidance; and a mandatory 5,000–10,000-rep simulation-verification step.</p>
-<p>[CONFIRM WITH ERIC: OK to present these GSD numbers, or do you want a newer run?]</p>
+
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -534,10 +529,9 @@ Eric Zhang, PhD
 <li>Simulation verification + Word report</li>
 </ul>
 </div><div class="column" style="width:33%;">
-<h3 data-number="1.6.3" id="c-build-a-skill"><span class="header-section-number">1.6.3</span> C · Build a skill</h3>
+<h3 data-number="1.6.3" id="c-practice-with-the-skills"><span class="header-section-number">1.6.3</span> C · practice with the skills</h3>
 <ul>
-<li>Read a <code>SKILL.md</code> and its references</li>
-<li>Modify / extend one</li>
+<li>try skills with an example</li>
 <li>Sketch your own</li>
 </ul>
 </div></div>
@@ -879,27 +873,7 @@ Eric Zhang, PhD
 </section>
 <section id="section-b-hands-on-exercise" class="slide level2" data-number="2.12">
 <h2><span class="header-section-number">2.12</span> Section B — hands-on exercise</h2>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>Exercise content pending — to be supplied and reviewed by Eric</p>
-</div>
-</div>
-</div>
-<p>Needs to be specified before this deck is final:</p>
-<ul>
-<li>The trial scenario (disease, line of therapy, endpoint(s), HR, medians)</li>
-<li>Single vs.&nbsp;co-primary; single vs.&nbsp;multi-population</li>
-<li>Which design decisions attendees make vs.&nbsp;which are pre-set</li>
-<li>Expected outputs to inspect (<code>gsd_results.json</code>, multiplicity diagram, <code>gsd_report.docx</code>)</li>
-<li>Stretch goal (e.g.&nbsp;an NPH sensitivity evaluation)</li>
-</ul>
+<p>Let’s design a Phase 3 Oncology trial</p>
 <aside class="notes">
 <p>FLAG: this section needs Eric’s direct input and review. Do not draft a scenario — the Q&amp;A flow, the specific numbers, and the “what good looks like” checkpoints should be Eric’s. Once provided, expand into step slides mirroring Section A’s structure.</p>
 <style type="text/css">
@@ -917,9 +891,9 @@ Eric Zhang, PhD
 <section id="section-b-debrief" class="slide level2" data-number="2.13">
 <h2><span class="header-section-number">2.13</span> Section B — debrief</h2>
 <ul>
-<li>Which constraint was binding — event target, minimum follow-up, or minimum gap?</li>
-<li>Did the simulation confirm the analytic design on the first try?</li>
-<li>What would you change about the design, and what lever would you pull?</li>
+<li>Are the questions asked by the skill helpful?</li>
+<li>Do the outputs include everything you need?</li>
+<li>Can you apply this skill to your workflow?</li>
 </ul>
 <aside class="notes">
 <p>Same disclaimer applies: a designed-and-verified draft is still a draft. The statistician owns the final design.</p>
